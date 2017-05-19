@@ -1,0 +1,66 @@
+#!/bin/bash
+echo "                                                                	  ";
+echo "                                                                    ";
+echo "--------------------------------------------------------------------";
+echo "|                                                                  |";
+echo "|.         .        .BIENVENUE SUR MON PROJET SYS.         .      .|";
+echo "|                   .                             .               .|";
+echo "|. Effectuer vos operations en entrant une lettre correspondante  .|";
+echo "|.                                .                               .|";
+echo "|. a) les informations des utilisateurs .                  .      .|";
+echo "|. b) Aquisition, installation et lancement                       .|";
+echo "|.                   de l'environnement  Xampp             .      .|";
+echo "|. c) Archivage des elements du repertoire personnel qui ont      .|"; 
+echo "|.          ete modifie par sudoer il y a deux jours dans un      .|";
+echo "|   peripherique externe.                                         .|";
+echo "|. d) Informations sur l'utilisations du disque,de la memoire et  .|";
+echo "|                du processeur                                    .|";
+echo "|. q) Pour quitter le programme         .                  .      .|";
+echo "-------------------------------------------------------------------";
+
+
+       read x;
+         while(test $x != q )do
+            if(test $x = a ) then
+              echo "          Les utitlisateurs sont    ";
+                   ls  /home;
+               else
+                  if(test $x = b ) then
+              echo "          Entrer le mot de passe du root Xampp-linux  ";
+              sudo wget https://www.apachefriends.org/fr/download_success.html/xampp-linux-x64-5.6.30-1-installer.run;
+              echo "Fin de votre installation ";
+              echo "Debut de l'installation.... ";
+             sudo chmod 777 xampp-linux-x64-5.6.30-1-installer.run;
+             sudo ./xampp-linux-x64-5.6.30-1-installer.run;
+              echo "Fin de l'installation xampp ";
+              echo "Lancement de xampp ";
+             sudo /lamp/lamp/ start;
+              echo "Termine ";
+            else
+                if(test $x = c ) then
+
+              echo "En cours.. ";
+              sudo find . -ctime -2>monfichier1 | tar cvf monfichier1.tar monfichier1;
+              echo  "Archivage effectue ";
+               else
+                 if(test $x = d ) then
+                   echo "Information du disque, de la memoire, processeur, swap ";
+                  top | head -6;
+                   df; 
+              else
+                  echo "Choix indisponible ";
+                 fi
+                 fi
+               fi
+            fi
+           echo "Entrer une lettre pour continuer ";
+         read x;
+     done
+
+       
+
+
+
+
+
+
